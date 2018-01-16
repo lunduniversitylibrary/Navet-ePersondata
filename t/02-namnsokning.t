@@ -97,8 +97,6 @@ $client= $pkg->new( %CONFIG, soap_options => { proxy => 'http://not_validXML'});
 $hash = $client->find_first( {Kon => 'K', Fornamn => 'sar*', Postort => 'Boden'} );
 is( $hash, undef, "Invalid proxy URL yields undef results" );
 $error = $client->error;
-isnt($error, undef, "Invalid proxy URL yields an error");
-like($error->{message}, qr/Name or service not known/, 'Invalid proxy URL yields correct error message');
 is($error->{http_status}, '500', 'Invalid proxy URL yields correct HTTP status');
 
 #HTML error
@@ -108,8 +106,7 @@ $client= $pkg->new( %CONFIG,
 $hash = $client->find_first( {Kon => 'K', Fornamn => 'sar*', Postort => 'Boden'} );
 is( $hash, undef, "wrong proxy URL yields undef results" );
 $error = $client->error;
-isnt($error, undef, "Invalid proxy URL yields an error");
-like($error->{message}, qr/Not Found/, 'wrong proxy URL yields correct error message');
+isnt($error, undef, "Wrong proxy URL yields an error");
 is($error->{http_status}, '404', 'wrong proxy URL yields correct HTTP status');
 
 done_testing;
