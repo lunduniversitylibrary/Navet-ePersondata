@@ -1,5 +1,5 @@
 {
-   "abstract" : "Blah blah blah",
+   "abstract" : "Simple framework for the Navet ePersondata web services",
    "author" : [
       "Snorri Briem <snorri.briem@ub.lu.se>"
    ],
@@ -26,7 +26,8 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.034"
+            "Module::Build::Tiny" : "0.034",
+            "perl" : "5.008005"
          }
       },
       "develop" : {
@@ -37,12 +38,15 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "Moo" : "0",
+            "SOAP::XML::Client::Generic" : "0",
+            "XML::LibXML" : "0"
          }
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.96"
+            "Test::Exception" : "0",
+            "Test::More" : "0"
          }
       }
    },
