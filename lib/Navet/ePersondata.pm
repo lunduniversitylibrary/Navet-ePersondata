@@ -5,6 +5,8 @@ use warnings;
 
 use Carp;
 use SOAP::XML::Client::Generic;
+use Crypt::SSLeay;
+use Net::SSL;
 use XML::LibXML;
 use Moo;
 
