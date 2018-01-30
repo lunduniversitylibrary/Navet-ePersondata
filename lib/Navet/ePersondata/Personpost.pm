@@ -45,7 +45,7 @@ Navet::ePersondata::Personpost - Talks to the Navet Personpost web service
     my $node = $ep->find_first({PersonId => '198602212394'})
         or die "Failed: ", $ep->error->{message};
     
-    my ($namn_node) = $node->findnodes('/Personpost/Namn');
+    my ($namn_node) = $node->findnodes('./Personpost/Namn');
     print "The name is ", join ' ', $namn_node->findvalue('./Fornamn'),
         $namn_node->findvalue('./Efternamn'), "\n";
 
