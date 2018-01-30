@@ -39,10 +39,13 @@ throws_ok {
 my @recs;
 my $node;
 my $client;
+my $error;
 
 lives_ok {$client= $pkg->new( %CONFIG ) } "construct with correct arguments";
 lives_ok {($node) = $client->find_all( {PersonId => '198602212394' } )} "find_all";
 
+$error=$client->error;
+is($error, undef, "find_all no error");
 # check  if first value is of type XML::XMLlib::Node.
 isa_ok($node, "XML::LibXML::Node", 'find_all first value');
  
@@ -72,7 +75,7 @@ is( $client->error, undef, "zero hits with no error" );
 $client= $pkg->new( %CONFIG, BestallningsId => 'BestallningsId not valid');
 $hash = $client->find_first( {PersonId => '198602212394' } );
 is( $hash, undef, "invalid parameters yield undef results" );
-my $error = $client->error;
+$error = $client->error;
 isnt($error, undef, "invalid parameters yields an error");
 like($error->{message}, qr/Felaktiga inparametrar/, 'invalid parameters yield correct error message');
 is($error->{http_status}, '500', 'invalid parameters yield correct HTTP status');
