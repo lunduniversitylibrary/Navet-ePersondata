@@ -49,7 +49,8 @@ lives_ok {$client= $pkg->new( %CONFIG ) } "new works";
 
 lives_ok {($node) = $client->find_all( {Kon => 'K', Fornamn => 'sar*', Postort => 'Boden'} )} "find_all namnsokning";
 $error=$client->error;
-is($error, undef, "find_all no error");
+is($error, undef, "find_all no error") or BAIL_OUT ("Namnsokning failed: " .  $error->{message} );
+
 #check  if first value is of type XML::XMLlib::Node.
 isa_ok($node, "XML::LibXML::Node", "find_all first value");
  

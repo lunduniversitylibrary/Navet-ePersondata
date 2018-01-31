@@ -45,7 +45,8 @@ lives_ok {$client= $pkg->new( %CONFIG ) } "construct with correct arguments";
 lives_ok {($node) = $client->find_all( {PersonId => '198602212394' } )} "find_all";
 
 $error=$client->error;
-is($error, undef, "find_all no error");
+is($error, undef, "find_all no error") or BAIL_OUT ("Personpost failed: " .  $error->{message} );
+
 # check  if first value is of type XML::XMLlib::Node.
 isa_ok($node, "XML::LibXML::Node", 'find_all first value');
  
