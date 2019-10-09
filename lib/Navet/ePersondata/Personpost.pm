@@ -34,10 +34,10 @@ Navet::ePersondata::Personpost - Talks to the Navet Personpost web service
     my $ep = Navet::ePersondata::Personpost->new(    
         # Set proxy to test service instead of production 
         soap_options => {
-            proxy => 'https://ppx4.skatteverket.se/nawa15/na_epersondata/V2/personpostXML'
+            proxy => 'https://www2.test.skatteverket.se/na/na_epersondata/V2/personpostXML'
         },
         pkcs12_file => '/path/to/certificate.p12',
-        pkcs12_password => '4309734529556524',
+        pkcs12_password => '5085873593180405',
         OrgNr => '162021004748',
         BestallningsId => '00000079-FO01-0001',
     );

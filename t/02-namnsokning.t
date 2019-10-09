@@ -6,11 +6,11 @@ use Test::Exception;
 my $pkg;
 
 my %CONFIG = (  
-    pkcs12_file => 't/notarealhost.kommun-a.se.p12',
-    pkcs12_password => '4309734529556524',
+    pkcs12_file => 't/Kommun A.p12',
+    pkcs12_password => '5085873593180405',
     OrgNr => '162021004748',
     BestallningsId => '00000079-FO01-0001',
-    soap_options => { proxy => 'https://ppx4.skatteverket.se/nawa15/na_epersondata/V2/namnsokningXML'}
+    soap_options => { proxy => 'https://www2.test.skatteverket.se/na/na_epersondata/V2/namnsokningXML'}
 );
 
 
@@ -27,7 +27,7 @@ throws_ok {
     $pkg->new( %CONFIG,
                format => 'xml',
                soap_options => {
-proxy => 'https://ppx4.skatteverket.se/nawa15/na_epersondata/V2/namnsokning'
+proxy => 'https://www2.test.skatteverket.se/na/na_epersondata/V2/namnsokning'
                },
              )
 } qr/^Incompatible values/, "incompatible values 2";
@@ -63,7 +63,7 @@ isa_ok($node, "XML::LibXML::Node", "find_first value");
 
 # format termdata
 lives_ok {$client= $pkg->new( %CONFIG, format => 'termdata',
-    soap_options => { proxy => 'https://ppx4.skatteverket.se/nawa15/na_epersondata/V2/namnsokning' },
+    soap_options => { proxy => 'https://www2.test.skatteverket.se/na/na_epersondata/V2/namnsokning' },
     ) } "constructor with format termdata";
 
 my $hash;
@@ -103,7 +103,7 @@ is($error->{http_status}, '500', 'Invalid proxy URL yields correct HTTP status')
 
 #HTML error
 $client= $pkg->new( %CONFIG,
-    soap_options => { proxy => 'https://ppx4.skatteverket.se/nawa15/na_epersondata/V2/nosuchserviceXML'}
+    soap_options => { proxy => 'https://www2.test.skatteverket.se/na/na_epersondata/V2/nosuchserviceXML'}
 );
 $hash = $client->find_first( {Kon => 'K', Fornamn => 'sar*', Postort => 'Boden'} );
 is( $hash, undef, "wrong proxy URL yields undef results" );

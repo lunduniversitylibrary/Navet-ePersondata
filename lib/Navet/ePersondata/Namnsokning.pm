@@ -6,7 +6,7 @@ use warnings;
 use Moo;
 use Navet::ePersondata;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 extends 'Navet::ePersondata';
 
@@ -58,7 +58,7 @@ Navet::ePersondata::Namsokning - Talks to the Namsokning web service that is pro
     
     my $ep = Navet::ePersondata::Namnsokning->new(
         pkcs12_file => '/path/to/certificate.p12',
-        pkcs12_password => '4309734529556524',
+        pkcs12_password => '5085873593180405',
         OrgNr => '162021004748',
         BestallningsId => '00000079-FO01-0001',
     );
