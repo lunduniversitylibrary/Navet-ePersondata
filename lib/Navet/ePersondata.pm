@@ -300,7 +300,7 @@ This package is the base class for talking with  Web Services - ePersondata
 provided by skatteverket.se. The specific modules to use are
 L<Navet::ePersondata::PersonPost> and  L<Navet::ePersondata:Namsokning> corresponding
 to Web Service Personpost and Namnsökning. Using these services requires agreement
-and access graneted by Skatteverket in Sweden and also a special certificate. 
+and access granted by Skatteverket in Sweden and also a special certificate. 
 
 =head1 METHODS
 

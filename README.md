@@ -58,7 +58,7 @@ This package is the base class for talking with  Web Services - ePersondata
 provided by skatteverket.se. The specific modules to use are
 [Navet::ePersondata::PersonPost](https://metacpan.org/pod/Navet::ePersondata::PersonPost) and  [Navet::ePersondata:Namsokning](https://metacpan.org/pod/Navet::ePersondata:Namsokning) corresponding
 to Web Service Personpost and Namnsökning. Using these services requires agreement
-and access graneted by Skatteverket in Sweden and also a special certificate. 
+and access granted by Skatteverket in Sweden and also a special certificate. 
 
 # METHODS
 
