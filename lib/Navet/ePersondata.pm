@@ -5,8 +5,7 @@ use warnings;
 
 use Carp;
 use SOAP::XML::Client::Generic;
-use Crypt::SSLeay;
-use Net::SSL;
+use IO::Socket::SSL;
 use XML::LibXML;
 use Moo;
 
@@ -53,6 +52,7 @@ sub _build_soap {
     my $xml = $self->format  eq 'xml' ? 'XML' : '';
     my $name = $self->_service_name;
     $arg{proxy} = "https://www2.skatteverket.se/na/na_epersondata/V2/$name$xml";
+    IO::Socket::SSL::set_defaults(cert_file => $self->pkcs12_file, passwd_cb => sub { $self->pkcs12_password; });
 
     SOAP::XML::Client::Generic->new({
         %arg,
@@ -70,11 +70,6 @@ sub _service_name  {
 
 sub _set_ssl_env {
     my $self = shift;
-    
-    $ENV{HTTPS_PKCS12_FILE}     =  $self->pkcs12_file; 
-    $ENV{HTTPS_PKCS12_PASSWORD} =  $self->pkcs12_password;
-    $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0;
-    $ENV{PERL_NET_HTTPS_SSL_SOCKET_CLASS}= 'Net::SSL';
 }
 
 sub _escape_string {
