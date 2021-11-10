@@ -7,7 +7,7 @@ my $pkg;
 
 my %CONFIG = (  
     pkcs12_file => 't/Kommun A.p12',
-    pkcs12_password => '5085873593180405',
+    pkcs12_password => '5761213661378233',
     OrgNr => '162021004748',
     BestallningsId => '00000079-FO01-0001',
     soap_options => { proxy => 'https://www2.test.skatteverket.se/na/na_epersondata/V2/namnsokningXML'}

@@ -52,7 +52,6 @@ sub _build_soap {
     my $xml = $self->format  eq 'xml' ? 'XML' : '';
     my $name = $self->_service_name;
     $arg{proxy} = "https://www2.skatteverket.se/na/na_epersondata/V2/$name$xml";
-    IO::Socket::SSL::set_defaults(cert_file => $self->pkcs12_file, passwd_cb => sub { $self->pkcs12_password; });
 
     SOAP::XML::Client::Generic->new({
         %arg,
@@ -70,6 +69,8 @@ sub _service_name  {
 
 sub _set_ssl_env {
     my $self = shift;
+
+    IO::Socket::SSL::set_defaults(cert_file => $self->pkcs12_file, passwd_cb => sub { $self->pkcs12_password; });
 }
 
 sub _escape_string {
