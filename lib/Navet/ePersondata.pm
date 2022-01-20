@@ -51,7 +51,7 @@ sub _build_soap {
     
     my $xml = $self->format  eq 'xml' ? 'XML' : '';
     my $name = $self->_service_name;
-    $arg{proxy} = "https://www2.skatteverket.se/na/na_epersondata/V2/$name$xml";
+    $arg{proxy} = "https://www2.skatteverket.se/na/na_epersondata/V3/$name$xml";
 
     SOAP::XML::Client::Generic->new({
         %arg,
