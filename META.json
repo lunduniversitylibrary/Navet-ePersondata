@@ -38,9 +38,8 @@
       },
       "runtime" : {
          "requires" : {
-            "Crypt::SSLeay" : "0",
+            "IO::Socket::SSL" : "0",
             "Moo" : "0",
-            "Net::SSL" : "0",
             "SOAP::XML::Client::Generic" : "0",
             "XML::LibXML" : "0"
          }

@@ -1,6 +1,5 @@
-requires 'Crypt::SSLeay';
+requires 'IO::Socket::SSL';
 requires 'Moo';
-requires 'Net::SSL';
 requires 'SOAP::XML::Client::Generic';
 requires 'XML::LibXML';
 
